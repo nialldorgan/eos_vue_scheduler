@@ -9,6 +9,8 @@ This takes 3 props
 3. A calendar options object
 
 ### User Object
+| Property | Type (description) |
+| -------- | ------------------ |
 | id | String (user id) |
 | name | String |
 
