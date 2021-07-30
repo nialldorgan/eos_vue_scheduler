@@ -1,20 +1,25 @@
 <template>
-    <div class="calendar-wrap">  
+    <table border >
       <calendar-header
       :days="days"
       :mode="mode"></calendar-header>
-      <div class="blocks">
-        <calendar-hours
-        :hours="hours"></calendar-hours>
-        <div v-for="(day, index) in days" class="building-blocks">
-          <calendar-day  
-          v-for="user in users()"      
-          :key="user.id"       
-          :hours="hours"></calendar-day>
-        </div>
-      </div>
-      
-    </div>
+      <tbody>
+        <tr v-for="(hour, index) in hours" :key="index">
+          <calendar-hours :hour="hour"></calendar-hours>
+          <template v-for="(day, index) in days">
+            <template v-for="user in users()">
+              <calendar-day 
+              @eventClick="emitEventClick"
+              @cellClick="emitCellClick"
+              :key="`${index}${user.id}`" 
+              :day="day"   
+              :user="user"
+              :hour="hour"></calendar-day>
+            </template>
+          </template>
+        </tr>
+      </tbody>
+    </table>
 </template>
 
 <script>
@@ -100,6 +105,14 @@ export default {
           index++
         }
       }
+    },
+
+    emitEventClick (event) {
+      this.$emit('eventClick', event)
+    },
+
+    emitCellClick (event) {
+      this.$emit('cellClick', event)
     }
   }
 }

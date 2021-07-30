@@ -1,20 +1,21 @@
-<template>
-  <div class="sticky-top">
-    <ul class="days">
-      <li 
-      :class="[{today: _isToday(value)}, 'day-indicator']"
-      :key="index"
-      v-for="({ value }, index) in days">
-        <div>
-          <span class="letters-date">{{_formatDayTitle(value)[0]}}</span>     
-          <span class="number-date">{{_formatDayTitle(value)[1]}}</span>
-        </div>
-        <div class="users">
-          <span v-for="user in users()" :key="user.id" class="usernames">{{user.name}}</span>
-        </div>
-      </li>
-    </ul>
-  </div>
+<template>  
+  <thead>
+    <tr>
+      <td rowspan="2"></td>
+      <th :class="[{today: _isToday(day.value)}, 'day-indicator']"
+      v-for="(day, index) in days" :colspan="users().length">
+        <div class="calendar-header">
+          <span class="letters-date">{{_formatDayTitle(day)[0]}}</span>
+          <span class="number-date">{{_formatDayTitle(day)[1]}}</span>
+        </div>        
+      </th>
+    </tr>
+    <tr>
+      <template v-for="(day, index) in days" >
+        <th v-for="user in users()" :key="`${index}${user.id}`">{{user.name}}</th>
+      </template>
+    </tr>
+  </thead>
 </template>
 
 <script>
@@ -52,7 +53,6 @@ export default {
   },
 
   methods: {    
-
     _formatDayTitle (date) {
       return formatDayTitle(date)
     },

@@ -42,6 +42,7 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
+    "big.js": "^6.1.1",
     "dayjs": "^1.10.6"
   }
 }

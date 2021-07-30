@@ -1,15 +1,10 @@
 <template>
-  <div>   
-    <ul class="hours">
-      <li
-        :key="index"
-        v-for="(hour, index) in hours" 
-        :style='`height:${hourHeight}px`'       
-      >
-        <span>{{ _formatLeftHours(hour.value) }}</span>
-      </li>
-    </ul> 
-  </div>
+  <td 
+  :style='`height:${hourHeight}px`'>
+    <div class="hours">
+      {{_formatLeftHours(hour.value)}}
+    </div>
+  </td>
 </template>
 
 <script>
@@ -19,7 +14,7 @@ export default {
   name: 'CalendarHours',
 
   props: {
-    hours: Array
+    hour: Object
   },
 
   data: function () {
@@ -40,7 +35,8 @@ export default {
 
   computed: {    
     hourHeight: function () {
-      return 6 * this.calendarOptions().tenMinuteHeight
+      // 12 five minutes in an hour
+      return 12 * this.calendarOptions().fiveMinuteHeight
     }
   },
 

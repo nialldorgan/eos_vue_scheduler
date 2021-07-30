@@ -1,11 +1,14 @@
 <template>
-  <ul class="calendar-day">
-    <calendar-cell
-    :cellData="value"
-    :user="user"
-    :index="index"
-    v-for="(value, index) in dayCells" :key="index"></calendar-cell>
-  </ul>
+  <td>
+    <ul>
+      <calendar-cell
+      @eventClick="emitEventClick"
+      @cellClick="emitCellClick"
+      :cellData="hourCell"
+      :user="user"
+      v-for="hourCell in getHourCells(day, hour.value)" :key="hourCell.index"></calendar-cell>
+    </ul>
+  </td>
 </template>
 
 <script>
@@ -16,13 +19,13 @@ export default {
   name: 'CalendarDay',
 
   props: {
-    hours: Array,
+    hour: Object,
+    day: Object,
     user: Object
   },
 
   data: function () {
-    return {
-      dayCells: []
+    return {      
     }
   },
 
@@ -31,31 +34,37 @@ export default {
   },
 
   mounted () {
-    this.getDayCells()
+
   },
 
   computed: {
-    startOfDay: function () {
-      return dayjs(this.hours[0].value)
-    },
-
-    endOfDay: function () {
-      return dayjs(this.hours[this.hours.length - 1].value).add(1, 'hour')
-    }
+    
   },
 
   methods: {
-    getDayCells () {
-      let hourIterator = this.startOfDay
+    getHourCells (day, start) {      
       let index = 0
-      while(hourIterator < this.endOfDay) {
-        this.dayCells.push({
-          value: hourIterator.format('YYYY-MM-DD HH:mm'),
+      let startHour = dayjs(`${dayjs(day.value).format('YYYY-MM-DD')} ${dayjs(start).format('HH:mm')}`)
+      let end = startHour.add(1, 'hour')
+      let hourCells = []
+      while(startHour < end) {
+        hourCells.push({
+          value: startHour.format('YYYY-MM-DD HH:mm'),
           index: index
         })
-        hourIterator = hourIterator.add(10, 'minutes')
+        // five minute intervals
+        startHour = startHour.add(5, 'minutes')
         index++
       }
+      return hourCells
+    },
+
+    emitEventClick (event) {
+      this.$emit('eventClick', event)
+    },
+    
+    emitCellClick (event) {
+      this.$emit('cellClick', event)
     }
   }
 }

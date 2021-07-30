@@ -13,7 +13,7 @@ module.exports = {
       globalObject: 'this'
         
     },
-    target: ['browserslist:defaults, not ie <= 11'],
+    target: ['browserslist:defaults, not ie <= 10'],
     devtool: false,
     plugins: [
       new VueLoaderPlugin(),

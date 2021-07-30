@@ -2,10 +2,8 @@ import dayjs from 'dayjs'
 import hourUtils from './components/vue_scheduler/hours.js'
 
 const formatDayTitle = (date) => {
-  let isoDate = new Date(date)
-  let dayName = isoDate.toUTCString().slice(0, 3)
-  let dayNumber = isoDate.getUTCDate()
-  return [dayName, dayNumber]
+  let dayObj = dayjs(date.value)
+  return [dayObj.format('ddd'), dayObj.format('D')]
 }
 
 const formatLeftHours = (date) => {

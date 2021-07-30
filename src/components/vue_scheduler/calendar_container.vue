@@ -1,6 +1,9 @@
 <template>
-  <div>
-    <calendar-week-view></calendar-week-view>
+  <div class="calendar-wrapper">
+    <calendar-week-view
+    @eventClick="emitEventClick"
+    @cellClick="emitCellClick"
+    ></calendar-week-view>
   </div>
 </template>
 
@@ -12,7 +15,8 @@ export default {
 
   props: {
     users: Array,
-    calendarOptions: Object
+    calendarOptions: Object,
+    events: Array
   },
 
   data: function () {
@@ -24,7 +28,8 @@ export default {
   provide: function () {
     return {
       calendarOptions: () => this.calendarOptions,
-      users: () => this.users
+      users: () => this.users,
+      events: () => this.events
     }
   },
 
@@ -41,7 +46,13 @@ export default {
   },
 
   methods: {
+    emitEventClick (event) {
+      this.$emit('eventClick', event)
+    },
 
+    emitCellClick (event) {
+      this.$emit('cellClick', event)
+    }
   }
 }
 
