@@ -15,6 +15,8 @@ This takes 3 props
 | name | String |
 
 ### Event Object
+| Property | Type (description) |
+| -------- | ------------------ |
 | id | String (event id) |
 | user_id | String |
 | title | String (event title) |
@@ -24,6 +26,8 @@ This takes 3 props
 | end_time | String (an end time and date for the event in the same format as start time) |
 
 ### Calendar Options Object
+| Property | Type (description) |
+| -------- | ------------------ |
 | mode | String (either of 'week' or 'day') |
 | fiveMinuteHeight | Number (the number of pixels to represent 5 minutes on the calendar) |
 | start_hour | Number (the hour to start the day) |
