@@ -48,7 +48,7 @@ export default {
   computed: {
     cellHeight: function () {
       // remove one for the border
-        return this.calendarOptions().fiveMinuteHeight - 1
+        return this.calendarOptions().five_minute_height - 1
     },
 
     eventWidth: function () {

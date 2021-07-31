@@ -46,8 +46,8 @@ export default {
     },
 
     eventHeight: function () {
-      // (event duration / five minutes) * fiveMinuteHeight
-      return 'height: ' + big(this.eventDuration).div(5).times(this.calendarOptions().fiveMinuteHeight).toNumber() + 'px;'
+      // (event duration / five minutes) * five_minute_height
+      return 'height: ' + big(this.eventDuration).div(5).times(this.calendarOptions().five_minute_height).toNumber() + 'px;'
     },
 
     eventStartTime: function () {

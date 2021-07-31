@@ -37,7 +37,7 @@ export default {
   computed: {    
     hourHeight: function () {
       // 12 five minutes in an hour - 1 for the border
-      return big(12).times(big(this.calendarOptions().fiveMinuteHeight)).toNumber() - 1
+      return big(12).times(big(this.calendarOptions().five_minute_height)).toNumber() - 1
     }
   },
 

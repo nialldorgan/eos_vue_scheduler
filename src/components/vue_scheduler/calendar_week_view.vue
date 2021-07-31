@@ -71,7 +71,7 @@ export default {
     },
 
     currentDay: function () {
-      return dayjs(this.calendarOptions().focusDate)
+      return dayjs(this.calendarOptions().focus_date)
     },
 
     startOfWeek: function () {
