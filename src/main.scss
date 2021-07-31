@@ -7,7 +7,8 @@
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
         Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
         'Segoe UI Symbol';
-
+    overflow-x: auto;
+    
     & ul {
         list-style: none;
         padding-left: 0px;
@@ -62,6 +63,9 @@
         min-width: 60px;
         display: flex;
         flex: 1;
+        &:not(:last-child) {
+            border-bottom: 1px dotted map.get($grey, 'lighten-4')
+        }
       }
     .hours {
         font-weight: 500;

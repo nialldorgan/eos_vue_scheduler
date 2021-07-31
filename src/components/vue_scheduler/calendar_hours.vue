@@ -10,6 +10,7 @@
 <script>
 /*  global  */
 import { formatLeftHours } from '../../utils.js'
+import big from 'big.js'
 export default {
   name: 'CalendarHours',
 
@@ -35,8 +36,8 @@ export default {
 
   computed: {    
     hourHeight: function () {
-      // 12 five minutes in an hour
-      return 12 * this.calendarOptions().fiveMinuteHeight
+      // 12 five minutes in an hour - 1 for the border
+      return big(12).times(big(this.calendarOptions().fiveMinuteHeight)).toNumber() - 1
     }
   },
 

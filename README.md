@@ -29,6 +29,18 @@ This takes 3 props
 | Property | Type (description) |
 | -------- | ------------------ |
 | mode | String (either of 'week' or 'day') |
-| fiveMinuteHeight | Number (the number of pixels to represent 5 minutes on the calendar) |
+| five_minute_height | Number (the number of pixels to represent 5 minutes on the calendar) |
 | start_hour | Number (the hour to start the day) |
 | end_hour | Number (the hour to end the day) |
+| focus_date | String (date the calendar will set as the current date) |
+
+### Events
+| Event | Description |
+| ----- | ----------- |
+| cellClick | emitted when an empty cell is clicked, use to book an event |
+| eventClick | emitted when an event is clicked, use to update or delete an event |
+
+| Event | Payload |
+| ----- | ------- |
+| cellClick | cellData { index (Number), value ( String 'YYYY-MM-DD HH:mm:ss')} |
+| evnetClick | event (an event object) |

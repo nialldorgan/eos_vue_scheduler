@@ -1,6 +1,6 @@
 {
   "name": "eos_vue_scheduler",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A vue calendar scheduler component",
   "main": "index.js",
   "scripts": {

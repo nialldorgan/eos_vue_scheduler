@@ -58,6 +58,10 @@ export default {
   watch: {
     mode: function () {
       this.getDays()
+    },
+
+    currentDay: function () {
+      this.getDays()
     }
   },
 
@@ -67,7 +71,7 @@ export default {
     },
 
     currentDay: function () {
-      return dayjs()
+      return dayjs(this.calendarOptions().focusDate)
     },
 
     startOfWeek: function () {
